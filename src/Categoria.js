@@ -12,30 +12,24 @@ class Categoria extends Component {
         }
     }
     loadData(id) {
-        axios.get('http://localhost:3001/produtos?categoria=' + id)
-        .then(res => {
-            this.setState({
-                produtos: res.data
-            })
-        })
 
-        axios.get('http://localhost:3001/categorias/' + id)
-        .then(res => {
-            this.setState({
-                categoria: res.data
-            })
-        })
+
+        this.props.loadProdutos(id)
+        this.props.loadCategoria(id)
     }
     componentDidMount() {
-        const { id } = this.props.match.params.catId
-        this.loadData(id)
+
+        //console.log(this.props.match.params);
+        //const { id } = this.props.match.params.catId
+    
+        this.loadData(this.props.match.params.catId)
     }
     componentWillReceiveProps(newProps) {
         this.loadData(newProps.match.params.catId)
     }
     renderProduto(produto) {
         return(
-            <p key={produto.id}>{produto.produto}</p>
+            <li key={produto.id}>{produto.produto}</li>
         )
     }
     render() {
@@ -43,7 +37,7 @@ class Categoria extends Component {
         return (
             <div>
                 <h1>{this.state.categoria.categoria}</h1>
-                <p>{this.state.produtos.map(this.renderProduto)}</p>
+                <ul>{this.state.produtos.map(this.renderProduto)}</ul>
             </div>
         )
     }

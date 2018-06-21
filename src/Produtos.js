@@ -3,6 +3,7 @@ import {Route, Link} from 'react-router-dom'
 
 import ProdutosHome from './ProdutosHome'
 import Categoria from './Categoria'
+import ProdutosNovo from './ProdutosNovo'
 
 class Produtos extends Component {
     constructor(props) {
@@ -94,13 +95,23 @@ class Produtos extends Component {
                                 type="text" ref="categoria" placeholder="Nova Categoria" className="form-control" />
                         </div>
                     </div>
+                    <br/>
+                    <Link to="/produtos/novo" className="btn btn-primary" >Novo Produto</Link>
                 </div>
                 <div className="col-lg-9">
                     
                     <h1>Produtos</h1>
                     <Route exact path={match.url} component={ProdutosHome} />
-                    <Route exact path={match.url + '/novo'} component={ProdutosNovo} />
-                    <Route path={match.url+"/categoria/:catId"} component={Categoria} />
+                    <Route exact path={match.url + '/novo'} render={(props) => {
+                        return <ProdutosNovo {...props} categorias={categorias} createProduto={this.props.createProduto} />
+                    }} />
+                    <Route path={match.url+"/categoria/:catId"} render={ (props) => {
+                        return <Categoria {...props}  loadProdutos={this.props.loadProdutos} 
+                            produtos={this.props.produtos} loadCategoria={this.loadCategoria} categoria={this.categoria} />
+
+                        }
+                    }
+                    />
                     
                 </div>
 
