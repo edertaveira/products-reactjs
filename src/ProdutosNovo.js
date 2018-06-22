@@ -33,15 +33,19 @@ class ProdutosNovo extends Component {
             <div>
                 <h2>Novo Produto</h2>
 
-                <select className="form-control" ref="categoria">
-                    {categorias.map((c) => {
-                        return <option key={c.id} value={c.id}>{c.categoria}</option>
-                    })}
-                </select>
+                <p>
+                    <select className="form-control" ref="categoria">
+                        {categorias.map((c) => {
+                            return <option key={c.id} value={c.id}>{c.categoria}</option>
+                        })}
+                    </select>
+                </p>
 
-
-                <input ref='produto' placeholder="Nome do novo produto" className="form-control" />
-                <button onClick={this.handleNewProduto}>Salvar</button>
+                <p>
+                    <input ref='produto' placeholder="Nome do novo produto" className="form-control" />
+                </p>
+                    
+                <button className="btn btn-success" onClick={this.handleNewProduto}>Salvar</button>
             </div>
         )
     }

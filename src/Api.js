@@ -9,7 +9,11 @@ const apis = {
     editCategoria: (categoria)=> api.put('categorias/'+categoria.id, categoria),
 
     createProduto: (produto)=> api.post('produtos', produto),
+    editProduto: (produto)=> api.put('produtos/' + produto.id, produto),
     loadProdutos: (categoria) =>  api.get('produtos?categoria=' + categoria),
-    readCategoria: (categoria) =>  axios.get('categorias/' + categoria)
+    deleteProdutos: (id) => api.delete('produtos/'+ id),
+    readCategoria: (categoria) =>  api.get('categorias/' + categoria),
+
+    readProduto: (id) => api.get('produtos/' + id)
 } 
 export default apis;

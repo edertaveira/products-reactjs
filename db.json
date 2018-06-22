@@ -12,23 +12,13 @@
     },
     {
       "id": 3,
-      "produto": "Bolacha",
-      "categoria": 2
-    },
-    {
-      "produto": "Testando",
-      "categoria": "1",
-      "id": 4
+      "produto": "Bolacha2 eee",
+      "categoria": "1"
     },
     {
       "produto": "Novo produto com redirect",
       "categoria": "1",
       "id": 5
-    },
-    {
-      "produto": "Outro teste",
-      "categoria": "1",
-      "id": 6
     },
     {
       "produto": "Teste Simples",
@@ -55,8 +45,8 @@
       "categoria": "Utilidades"
     },
     {
-      "categoria": "TEste2",
-      "id": 4
+      "categoria": "Categoria Nova",
+      "id": 5
     }
   ]
 }

@@ -19,6 +19,9 @@ class App extends Component {
     this.createProduto = this.createProduto.bind(this)
     this.loadProdutos = this.loadProdutos.bind(this)
     this.loadCategoria = this.loadCategoria.bind(this)
+    this.removeProduto = this.removeProduto.bind(this)
+    this.readProduto = this.readProduto.bind(this)
+    this.editProduto = this.editProduto.bind(this)
 
     this.state = {
       categorias : [],
@@ -55,6 +58,14 @@ class App extends Component {
     return this.props.api.createProduto(produto)
   }
 
+  editProduto(produto) {
+    return this.props.api.editProduto(produto)
+  }
+
+  removeProduto (prod) {
+    return this.props.api.deleteProdutos(prod.id)
+  }
+
   loadProdutos(categoria) {
     this.props.api.loadProdutos(categoria)
       .then(res => {
@@ -64,7 +75,12 @@ class App extends Component {
       })
   }
 
+  readProduto(id) {
+    return this.props.api.readProduto(id)
+  }
+
   loadCategoria(categoria) {
+    
     this.props.api.readCategoria(categoria)
     .then(res => {
         this.setState({
@@ -110,8 +126,13 @@ class App extends Component {
                 categorias={this.state.categorias}
                 createProduto={this.createProduto}
                 loadProdutos={this.loadProdutos}
-                produtos={this.produtos}
+                produtos={this.state.produtos}
                 loadCategoria={this.loadCategoria}
+                categoria={this.state.categoria}
+                removeProduto={this.removeProduto}
+                editProduto={this.editProduto}
+
+                readProduto={this.readProduto}
               /> }
               
             />
